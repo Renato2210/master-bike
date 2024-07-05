@@ -27,6 +27,7 @@ urlpatterns = [
     path('crearcuenta/', views.crear_cuenta, name='Crearcuenta'),
     path('olvidaste_contra/', views.olvidaste_contra, name='olvidaste_contra'),
     path('arriendo/', views.arriendo, name='arriendo'),
+    path('formulario_arriendo/', views.formulario_arriendo, name='formulario_arriendo'),
 ]
 
 

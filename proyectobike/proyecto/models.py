@@ -1,18 +1,14 @@
 # Create your models here.
 
 from django.db import models
+from django.contrib.auth.models import User
 
-class Pago(models.Model):
-    METODOS_ENTREGA = [
-        ('envio', 'Envío'),
-        ('tienda', 'Retiro en tienda'),
-    ]
-
-    nombre = models.CharField(max_length=100)
-    numero_tarjeta = models.CharField(max_length=16)
-    fecha_vencimiento = models.CharField(max_length=5)
-    metodo_entrega = models.CharField(max_length=6, choices=METODOS_ENTREGA)
+class Arriendo(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    bike_model = models.CharField(max_length=100)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return f'{self.nombre} - {self.numero_tarjeta}'
-
+        return f"{self.user.username} - {self.bike_model}"

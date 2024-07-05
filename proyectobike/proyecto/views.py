@@ -1,33 +1,46 @@
 # proyecto/views.py
 
-from django.shortcuts import render, redirect
-from .forms import PagoForm
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
+from .models import Arriendo
+from .forms import ArriendoForm
+
+def inicio(request):
+    return redirect(reverse('catalogo'))
+
+def formulario_arriendo(request):
+    if request.method == 'POST':
+        form = ArriendoForm(request.POST)
+        if form.is_valid():
+            arriendo = form.save(commit=False)
+            arriendo.user = request.user
+            arriendo.save()
+            return redirect('recibo_arriendo', arriendo_id=arriendo.id)
+    else:
+        form = ArriendoForm()
+    return render(request, 'app/formulario_arriendo.html', {'form': form})
+
+def recibo_arriendo(request, arriendo_id):
+    arriendo = get_object_or_404(Arriendo, id=arriendo_id)
+    return render(request, 'app/recibo_arriendo.html', {'arriendo': arriendo})
 
 def home(request):
     return render(request, 'app/PaginaP.html')
 
-def catalogo(request):
-    return render(request, 'app/catalogo.html')
+def crear_cuenta(request):
+    return render(request, 'app/Crearcuenta.html')
 
 def login(request):
     return render(request, 'app/login.html')
 
-def crear_cuenta(request):
-    return render(request, 'app/Crearcuenta.html')
-
 def olvidaste_contra(request):
-    return render(request, 'app/olvidastecontra.html')
+    return render(request, 'app/olvidaste_contra.html')
+
+def catalogo(request):
+    return render(request, 'app/catalogo.html')
 
 def arriendo(request):
     return render(request, 'app/arriendo.html')
 
 def pagar_view(request):
-    if request.method == 'POST':
-        form = PagoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('PaginaP')  # Redirigir a una página de confirmación o principal
-    else:
-        form = PagoForm()
-    
-    return render(request, 'app/pagar.html', {'form': form})
+    return render(request, 'app/pagar.html')
