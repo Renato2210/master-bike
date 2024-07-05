@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Arriendo
+from .models import Pago
 
-admin.site.register(Arriendo)
+admin.site.register(Pago)
 
 # Register your models here.

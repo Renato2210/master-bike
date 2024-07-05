@@ -16,18 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.contrib.auth import views as auth_views
 from proyecto import views
 
 urlpatterns = [
     path('', views.home, name='PaginaP'),
+    path('admin/', admin.site.urls),
+    path('pagar/', views.pagar_view, name='pagar'),  # Corrección aquí
     path('catalogo/', views.catalogo, name='catalogo'),
     path('login/', views.login, name='login'),
     path('crearcuenta/', views.crear_cuenta, name='Crearcuenta'),
     path('olvidaste_contra/', views.olvidaste_contra, name='olvidaste_contra'),
     path('arriendo/', views.arriendo, name='arriendo'),
-    path('pagar/', views.pagar_view, name='pagar'),  
-    path('formulario_arriendo/', views.formulario_arriendo, name='formularioarriendo'),
-    path('recibo_arriendo/<int:arriendo_id>/', views.recibo_arriendo, name='recibo_arriendo'),
 ]
+
 
