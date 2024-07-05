@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Pago</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'PaginaP' %}">MB</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Cuenta
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'Crearcuenta' %}">Crear cuenta</a></li>
+                                <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar Sesion</a></li>
+                                <li><a class="dropdown-item" href="{% url 'olvidaste_contra' %}">¿Olvidaste tu contraseña?</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'catalogo' %}">Catalogo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'arriendo' %}">Arriendo de bicicletas</a>
+                        </li>
+                    </ul>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                        Carrito
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1>Formulario de Pago</h1>
+                <form id="paymentForm" onsubmit="return validatePaymentForm()">
+                    <div class="mb-3">
+                        <label for="cardName" class="form-label">Nombre en la Tarjeta</label>
+                        <input type="text" class="form-control" id="cardName" required>
+                        <div class="invalid-feedback" id="cardNameError"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cardNumber" class="form-label">Número de Tarjeta</label>
+                        <input type="text" class="form-control" id="cardNumber" required>
+                        <div class="invalid-feedback" id="cardNumberError"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="expiryDate" class="form-label">Fecha de Vencimiento</label>
+                            <input type="text" class="form-control" id="expiryDate" placeholder="MM/AA" required>
+                            <div class="invalid-feedback" id="expiryDateError"></div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cvv" class="form-label">CVV</label>
+                            <input type="text" class="form-control" id="cvv" required>
+                            <div class="invalid-feedback" id="cvvError"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="metodo">Método de entrega:</label>
+                        <select class="form-select" id="metodo" onchange="toggleDireccion()">
+                            <option value="">Selecciona una opción</option>
+                            <option value="envio">Envío</option>
+                            <option value="tienda">Retiro en tienda</option>
+                        </select>
+                        <div class="invalid-feedback" id="metodoError"></div>
+                    </div>
+                    <div id="direccionField" style="display: none;">
+                        <div class="mb-3">
+                            <label for="direccion">Dirección de envío:</label>
+                            <input type="text" class="form-control" id="direccion">
+                            <div class="invalid-feedback" id="direccionError"></div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Pagar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Enlace al archivo JavaScript externo -->
+    <script src="{% static 'app/script.js' %}"></script>
+    
+    <!-- Scripts de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+

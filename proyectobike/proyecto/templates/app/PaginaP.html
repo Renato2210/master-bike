@@ -1,0 +1,202 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home MasterBike</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  </head>
+  <body>
+    <!-- Navbar compartida -->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'PaginaP' %}">MB</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Cuenta
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'Crearcuenta' %}">Crear cuenta</a></li>
+                  <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar Sesión</a></li>
+                  <li><a class="dropdown-item" href="#">¿Olvidaste tu contraseña?</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'catalogo' %}">Catálogo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'arriendo' %}">Arriendo de bicicletas</a>
+              </li>
+            </ul>
+            <button type="button" class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+              Carrito
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+      <center>
+      <h1 class="p-5">Bienvenido a MasterBike</h1>
+    </center> 
+    <div id="carouselDark" class="carousel carousel-dark slide mb-5" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <a href="{% url 'PaginaP' %}">
+            <img src="{% static 'img/bicicleta 1.webp' %}" class="d-block w-100" alt="cargando imagen...">
+          </a>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Ver catálogo</h5>
+            <p>Visita nuestro catálogo con miles de productos</p>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <a href="{% url 'arriendo' %}">
+            <img src="{% static 'img/bicicleta-3.webp' %}" class="d-block w-100" alt="Cargando imagen...">
+          </a>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Realizar Arriendo</h5>
+            <p>Puedes realizar arriendo de bicicletas. Averigua cómo hacerlo.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'img/ruedas.webp' %}" class="d-block w-100" alt="Cargando imagen...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Solicitar Mantención</h5>
+            <p>Ofrecemos la mejor mantención para tu bicicleta.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+      </div>
+    </div>
+
+
+    <center>
+      <h1>Productos destacados</h1>
+    </center>
+
+    <div class="row justify-content-center">
+      <!-- Tarjetas de productos -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="{% static 'img/bicicleta-1.webp' %}" class="card-img-top" alt="Bicicleta Falcon Turquesa">
+          <div class="card-body">
+            <h5 class="card-title">Falcon Turquesa</h5>
+            <p class="card-text">Bicicleta apta para el día en ciudad y ciclovías que necesita poca mantención.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary w-100">Comprar</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="{% static 'img/bicicleta-2.webp' %}" class="card-img-top" alt="Bicicleta Roja">
+          <div class="card-body">
+            <h5 class="card-title">Bicicleta Roja</h5>
+            <p class="card-text">Bicicleta todoterreno, apta para el deporte.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary w-100">Comprar</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="{% static 'img/bicicleta-3.webp' %}" class="card-img-top" alt="Bicicleta Infantil">
+          <div class="card-body">
+            <h5 class="card-title">Bicicleta Infantil</h5>
+            <p class="card-text">Bicicleta para niños, la mejor primera bicicleta que alguien podría tener.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary w-100">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    </main>
+
+    <footer class="bg-light pt-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <h5>Ayuda</h5>
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-dark">Términos y Condiciones</a></li>
+              <li><a href="#" class="text-dark">Preguntas Frecuentes</a></li>
+              <li><a href="#" class="text-dark">Seguimiento de Pedido</a></li>
+              <li><a href="#" class="text-dark">Condiciones de promociones</a></li>
+              <li><a href="#" class="text-dark">Contacto</a></li>
+              <li><a href="#" class="text-dark">Cambios</a></li>
+              <li><a href="#" class="text-dark">Medios de pago</a></li>
+              <li><a href="#" class="text-dark">Despacho</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 mb-3">
+            <h5>Sobre Nosotros</h5>
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-dark">Nuestra Historia</a></li>
+              <li><a href="#" class="text-dark">Trabaja con Nosotros</a></li>
+              <li><a href="#" class="text-dark">Términos y Condiciones</a></li>
+              <li><a href="#" class="text-dark">Términos Legales</a></li>
+              <li><a href="#" class="text-dark">Nuestro Blog</a></li>
+              <li><a href="#" class="text-dark">Reciclaje</a></li>
+              <li><a href="#" class="text-dark">Política de Privacidad</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <p class="text-muted small mb-0">&copy; 2024 MasterBike. Todos los derechos reservados.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito de Compras</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <!-- Contenido del carrito -->
+        <p>Aquí se mostrarán los productos añadidos al carrito.</p>
+        <!-- Botón "Agregar al carrito" -->
+        <div class="d-grid gap-2">
+          <a href="{% url 'pagar' %}" class="btn btn-primary" role="button">Pagar</a>
+        </div>
+      </div>
+    </div>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"  crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
