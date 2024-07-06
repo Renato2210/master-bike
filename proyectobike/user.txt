@@ -1,0 +1,4 @@
+Username (leave blank to use 'maxgu'): admim
+Email address: max.guzmanh@duocuc.cl
+Password: 1234
+
